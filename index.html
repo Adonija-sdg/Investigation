@@ -1116,20 +1116,20 @@ Analysis of theft or fraud incidents, search for tangible evidence, and submissi
 
 <!-- Liens vers les sections du site -->
 <section id="quick-links" style="background:#ffffff; padding:40px 20px; text-align:center;">
-  <h3 style="color:#151352; font-size:1.5em; margin-bottom:30px;">Liens rapides</h3>
+  <h3 style="color:#151352; font-size:1.5em; margin-bottom:30px;" data-fr="Liens rapides" data-en="Quick links">Liens rapides</h3>
   <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px; font-size:1em;">
-    <a href="#hero-id" class="quick-link">Accueil</a>
-    <a href="#goals" class="quick-link">Objectifs</a>
-    <a href="#about" class="quick-link">À propos</a>
-    <a href="#projects" class="quick-link">Nos services</a>
-    <a href="#news" class="quick-link">Actualités</a>
-    <a href="#cyber-tips" class="quick-link">Astuces</a>
-    <a href="#contact" class="quick-link">Contact</a>
+    <a href="#hero-id" class="quick-link" data-fr="Accueil" data-en="Home">Accueil</a>
+    <a href="#goals" class="quick-link" data-fr="Objectifs" data-en="Goals">Objectifs</a>
+    <a href="#about" class="quick-link" data-fr="À propos" data-en="About">À propos</a>
+    <a href="#projects" class="quick-link" data-fr="Nos services" data-en="Our services">Nos services</a>
+    <a href="#news" class="quick-link" data-fr="Actualités" data-en="News">Actualités</a>
+    <a href="#cyber-tips" class="quick-link" data-fr="Cyber-Astuces" data-en="Cyber-tips">Cyber-Astuces</a>
+    <a href="#contact" class="quick-link" data-fr="Contact" data-en="Contact">Contact</a>
   </div>
 </section>
 
 
-<footer>
+<footer data-fr="2025 Investigapol. Tous droits réservés." data-en="2025 Investigapol. All rights reserved.">
   &copy; 2025 Investigapol. Tous droits réservés.
 </footer>
 
@@ -1196,7 +1196,24 @@ Analysis of theft or fraud incidents, search for tangible evidence, and submissi
       optionList.style.display = "none";
     }
   });
+
+  // Enregistrer la langue
+localStorage.setItem('lang', lang);
+
+// Appliquer au chargement
+document.addEventListener("DOMContentLoaded", () => {
+  const lang = localStorage.getItem('lang') || 'fr';
+  document.querySelectorAll('[data-fr][data-en]').forEach(element => {
+    const translated = element.getAttribute(`data-${lang}`);
+    if (translated) {
+      element.textContent = translated;
+    }
+  });
+});
+
 </script>
+
+
 
 
 
