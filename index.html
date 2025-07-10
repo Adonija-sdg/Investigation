@@ -646,6 +646,86 @@ textarea {
 }
 
 
+/* === CORRECTIF MOBILE COMPLET === */
+
+@media (max-width: 768px) {
+  /* Header : empilement vertical */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 15px;
+    height: auto;
+  }
+
+  /* Centre du header (nav + langue) */
+  .header-center {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  /* Nav : empilement vertical */
+  nav {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  nav a {
+    padding: 10px 15px;
+    width: 100%;
+    border-left: none !important;
+    border-bottom: 1px solid #00b4ff;
+    box-sizing: border-box;
+  }
+
+  nav a:last-child {
+    border-bottom: none;
+  }
+
+  /* Image galerie : pleine largeur max 200px */
+  .image-gallery {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .image-gallery img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    transform: none !important; /* Annule la rotation sur mobile */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  }
+
+  /* Texte sous l’image, centré */
+  .text-content {
+    padding-left: 0 !important;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Section héro prend toute la hauteur minimale pour ne pas déborder */
+  .hero {
+    flex-direction: column;
+    height: auto;
+    padding: 30px 5%;
+  }
+
+  /* Contact section : colonnes empilées */
+  #contact .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Ajuste la taille du bouton langue */
+  .custom-language-select #selected-language {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+
   </style>
 </head>
 
