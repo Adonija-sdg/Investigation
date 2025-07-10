@@ -1,126 +1,248 @@
-"<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrilens IA</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Investigapol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0d1b2a;
+      color: white;
+    }
+
+    header {
+      background-color: #060213;
+      padding: 15px 30px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #00b4ff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .site-logo {
+      height: 60px;
+      width: auto;
+    }
+
+    .header-center {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      justify-content: center;
+      gap: 20px;
+    }
+
+   
+.custom-language-select {
+  position: relative;
+  display: inline-block;
+}
+
+#selected-language {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.flag-icon {
+  width: 20px;
+  height: auto;
+}
+
+.language-options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #0d1b2a;
+  border: 1px solid #6995f4;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+  width: 100%;
+  z-index: 1000;
+  border-radius: 6px;
+}
+
+.language-options li {
+  padding: 5px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.language-options li:hover {
+  background: #6995f4;
+}
+
+
+    nav {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 5px 15px;
+      border-left: 1px solid #00b4ff;
+    }
+
+    nav a:first-child {
+      border-left: none;
+    }
+
+    nav a:hover {
+      color: #ff3c3c;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 5px;
+    }
+
+    .language-select {
+      color: white;
+      background-color: #0d1b2a;
+      border: 1px solid #00b4ff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-left: 20px;
+    }
+
+    .separator {
+      height: 5px;
+      background: linear-gradient(to right, #ff3c3c, #00b4ff);
+      width: 100%;
+      margin-top: 80px;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100vh;
+      padding: 0 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #particles-js {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      width: 100%;
+    }
+
+    .image-gallery {
+      flex: 1;
+      display:flex;
+      justify-content: center;
+      align-items:end;
+      gap: 10px;
+    }
+
+    .image-gallery img {
+      height: 500px;
+      width: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 5px 50px rgba(0,0,0,0.6);
+      transform: rotate(-10deg);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .text-content {
+      flex: 1;
+      z-index: 2;
+      padding-left: 40px;
+    }
+
+    .text-content h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #00b4ff;
+    }
+
+    .text-content p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #ddd;
+    }
+
+    .text-content button {
+      padding: 12px 25px;
+      background-color: #ff3c3c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .text-content button:hover {
+      background-color: #cc2f2f;
+    }
+
+    footer {
+      background-color: #06101c;
+      text-align: center;
+      padding: 30px;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .image-gallery {
+        flex-direction: row;
+        margin-bottom: 30px;
+      }
+
+      .text-content {
+        padding-left: 0;
+      }
+    }
 
     
-    <style>
-        /* Styles généraux */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-
-        /* En-tête amélioré */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background: linear-gradient(90deg, rgb(253, 255, 254) 0%, rgb(253, 255, 254) 100%);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-
-
-  transition: background-color 0.3s ease;
-
-
-}
-
-/* Effet d'ombre en scroll */
-header.scrolled {
-  background: linear-gradient(90deg, #c4d7ce 0%, #c4d7ce 100%);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* optionnel pour effet */
-}
-
-
-nav {
-    order: -1; /* Déplace les onglets avant le logo */
-}
-
-        .logo {
-            font-size: 1em;
-            font-weight: bold;
-            margin-left: auto;
-        }
-
-        .site-logo {
-           height: 90px;
-           width: auto;
-           margin-right: 50px; /* Espacement entre le logo et le texte/menu */
-}
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-        }
-
-        nav ul li {
-            margin: 0 20px;
-        }
-
-        nav ul li a {
-            color: rgb(21, 89, 62);
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: white;
-        }
-
-        /* Accueil */
-        #home {
-            background: url('https://source.unsplash.com/1600x900/?mining,industry') no-repeat center center/cover;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: black;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-        }
-
-        #home h1 {
-            font-size: 3em;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-
-        .btn {
-            background: red;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: background 0.3s, transform 0.2s;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            background: darkred;
-            transform: scale(1.1);
-        }
-
         /* Sections */
         section {
             padding: 100px 20px;
@@ -133,52 +255,9 @@ nav {
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Section Projets */
-        .projects-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .project {
-            
-            background: white;
-            padding: 20px;
-            max-width: 350px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        #projects {
-    background: url('images/photo4.jpeg') no-repeat center center/cover;
-    padding: 100px 20px;
-    text-align: center;
-    color: black; /* Pour améliorer la lisibilité */
-    position: relative;
-}
-
-#projects h2 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-
-
-        .project:hover {
-            transform: scale(1.05);
-        }
-
-        .project img {
-            width: 100%;
-            border-radius: 8px;
-        }
-
-                /* Section Services */
-                #goals {
-    background: white;
+  /* Section Objectifs */
+    #goals {
+    background: rgb(227, 232, 240);
     padding: 100px 20px;
     text-align: center;
 }
@@ -197,7 +276,7 @@ nav {
 }
 
 .goal-box {
-    background: #e9f7ef;
+    background: #0e2150;
     padding: 30px;
     max-width: 400px;
     border-radius: 10px;
@@ -205,20 +284,259 @@ nav {
     transition: transform 0.3s ease-in-out;
 }
 
-
-
 .goal-box:hover {
     transform: translateY(-5px);
 }
 
 .goal-icon {
     font-size: 40px;
-    color: #228b22;
+    color: #00b4ff;
     margin-bottom: 20px;
 }
 
+ /* SECTION À PROPOS AMÉLIORÉE */
+        .about-section {
+  padding: 60px 20px;
+  background: #060213
+}
 
-/* Section Contact */
+.about-image img {
+  max-width: 40%;
+  border-radius: 5px;
+}
+.about-image {
+  flex: 1;
+}
+.about-content {
+  flex: 1;
+}
+.subtitle {
+  color: #6a76f3;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.about-title {
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+#about h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color:rgb(235, 235, 235);
+}
+.about-text {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.about-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+.tab-button {
+  background: #fff;
+  border: 1px solid #000ea8;
+  color: #3000a8;
+  padding: 10px 50px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+.tab-button.active,
+.tab-button:hover {
+  background: #1900a8;
+  color: white;
+}
+.tab-content {
+  display: none;
+  margin-top: 15px;
+}
+.tab-content.active {
+  display: block;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: #1900a8;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.about-title-container {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.main-title {
+  font-size: 3rem;
+  color: #000;
+  font-weight: bold;
+  margin-top: 60px;
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+ /* Section services ou Projets */
+            .projects-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        padding: 0 20px;
+        justify-items: center;
+        }
+
+        .project {
+            
+            background: white;
+            padding: 20px;
+            max-width: 350px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        #projects {
+    background: linear-gradient(to bottom right, #f2f6fc, #dbe9f4);
+        padding: 100px 20px;
+        text-align: center;
+        color: #000;
+}
+
+#projects h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+        .project:hover {
+            transform: scale(1.05);
+        }
+
+        .project img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+
+      .flip-card {
+        background-color: transparent;
+        width: 250px;
+        height: 320px;
+        perspective: 1000px;
+      }
+
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+      }
+
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+
+      .flip-card-front {
+        background-color: #ffffff;
+        color: black;
+      }
+
+      .flip-card-front img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .flip-card-front h3 {
+        padding: 10px;
+        font-size: 1.2em;
+        background-color: #002244;
+        color: white;
+      }
+
+      .flip-card-back {
+        background-color: #003366;
+        color: white;
+        transform: rotateY(180deg);
+        padding: 20px;
+        font-size: 0.95em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+   
+
+ /*  Actualités & Cyberalertes */
+      .news-slider {
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 1.2em;
+      color: #003366;
+      font-weight: bold;
+      animation: slide-news 20s linear infinite;
+    }
+    .news-item {
+      display: inline-block;
+      padding: 0 50px;
+    }
+    @keyframes slide-news {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+
+ /*  Astuces Cybersécurité */
+ .tips-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .tip-card {
+      background: #f0f8ff;
+      border-left: 5px solid #0074cc;
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 300px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    .tip-card:hover {
+      transform: translateY(-5px);
+    }
+    .tip-card h3 {
+      font-size: 1.2em;
+      color: #002244;
+      margin-bottom: 10px;
+    }
+    .tip-card p {
+      font-size: 0.95em;
+      color: #444;
+    }
+
+    
+        /* Section Contact */
 #contact {
     background: rgba(255, 255, 255, 0.045);
     padding: 50px 20px;
@@ -230,7 +548,7 @@ nav {
 
 #contact h2 {
     font-size: 2.5em;
-    color: black;
+    color: rgb(255, 255, 255);
     margin-bottom: 30px;
 }
 
@@ -284,7 +602,7 @@ textarea {
 }
 
 .submit-btn {
-    background-color: #00a859;
+    background-color: #0300a8;
     color: white;
     padding: 12px 25px;
     border: none;
@@ -296,7 +614,7 @@ textarea {
 }
 
 .submit-btn:hover {
-    background-color: #007a42;
+    background-color: #00087a;
 }
 
 .social-links {
@@ -313,319 +631,350 @@ textarea {
 }
 
 .social-icon:hover {
-    color: #00a859;
+    color: #0003a8;
+}
+
+/* Section lien rapide */
+.quick-link {
+  color: #0056a8;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.quick-link:hover {
+  color: red;
 }
 
 
-
-
-                /* Slider d'images en arrière-plan */
-                .slider-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .slider-container img {
-            position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-        }
-
-        .slider-container img.active {
-            opacity: 1;
-        }
-        .flag {
-            width: 50px;
-            height: auto;
-            display: block;
-            margin: 0 auto 10px;
-        }
-
-        footer {
-            background: gray;
-            text-align: center;
-            padding: 10px;
-            color: white;
-        }
-
-        /* SECTION À PROPOS AMÉLIORÉE */
-        .about-section {
-  padding: 60px 20px;
-  background: #e9f7ef;
-}
-
-.about-image img {
-  max-width: 100%;
-  border-radius: 20px;
-}
-.about-image {
-  flex: 1;
-}
-.about-content {
-  flex: 1;
-}
-.subtitle {
-  color: #00a859;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-.about-title {
-  font-size: 28px;
-  margin: 10px 0;
-}
-.about-text {
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-.about-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.tab-button {
-  background: #fff;
-  border: 1px solid #00a859;
-  color: #00a859;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 30px;
-  transition: all 0.3s ease;
-}
-.tab-button.active,
-.tab-button:hover {
-  background: #00a859;
-  color: white;
-}
-.tab-content {
-  display: none;
-  margin-top: 15px;
-}
-.tab-content.active {
-  display: block;
-}
-
-
-.subtitle {
-  font-size: 1.5rem;
-  color: rgb(21, 89, 62);
-  display: block;
-  margin-bottom: 10px;
-}
-
-.about-title-container {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.main-title {
-  font-size: 3rem;
-  color: #000;
-  font-weight: bold;
-  margin-top: 60px;
-}
-
-.about-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  padding: 0 20px;
-}
-
-
-
-
-
-/* Animation d'apparition */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-#career h2 {
-    font-size: 2.5em;
-    color: black;
-    margin-bottom: 30px;
-}
-
-.career-container {
-    display: flex;
-    flex-wrap: wrap; /* Permet le retour à la ligne si l'écran est trop petit */
-    gap: 20px; /* Espacement entre les offres */
-    justify-content: space-between; /* Répartit les offres horizontalement */
-    
-}
-
-.job {
-    flex: 1; /* Permet aux offres de s’adapter à la taille de l’écran */
-    min-width: 300px; /* Largeur minimale pour éviter que les blocs soient trop petits */
-    max-width: 400px; /* Largeur maximale pour contrôler l'affichage */
-    background-color: #f5f5f5;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-
-
-
-    </style>
+  </style>
 </head>
+
 <body>
 
-    <!-- En-tête -->
-    <header>
-      <div class="logo">
-        <img src="images/logoAgri.jpg" alt="Agrilens IA" class="site-logo">
-     </div>
-    
-        <nav>
-            <ul>
-                <li><a href="#home">Accueil</a></li>
-                <li><a href="#goals">Ojbectifs du projet</a></li>
-                <li><a href="#about">À Propos</a></li>
-                <li><a href="#projects">Nos services</a></li> 
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+  <div class="header-left">
+    <img src="images/logoInves.png" alt="Investigapol" class="site-logo">
+  </div>
 
-    <!-- Accueil -->
-    <section id="home">
-      <div class="slider-container">
-        <img src= "images/photo1.jpg" class="">
-        <img src="images/photo2.jpg" class="">
-        <img src="images/photo3.jpeg">
-        <img src="images/photo4.jpg">
-        <img src="images/photo6.jpg">
-        <img src="images/photo7.jpg">
-        <img src="images/photo8.jpg">
-       
-    </div>
-        <h1>Bienvenue sur le site de AGRILENS IA</h1>
-        <p></p>
-        <a href="#about" class="btn">Découvrir</a>
-    </section>
-
-    <!-- Nos objectifs -->
-    <section id="goals">
-        <h2>Objectifs du projet</h2>
-        <div class="goals-container">
-            <div class="goal-box" data-aos="fade-up" data-aos-duration="1000">
-              <i class="fas fa-search-plus goal-icon"></i>
-              <h3>Développement de partenariats entre les écosystèmes entrepreneuriaux</h3>
-            </div>
-            <div class="goal-box" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-              <i class="fas fa-leaf goal-icon"></i>
-              <h3>Augmentation de la productivité agricole & gestion durable</h3>
-            </div>
-          </div>
-          
-      </section>
-      
-
-   <!-- À Propos -->
-   <section class="about-section" id="about">
-
-    <!-- Titre bien centré au-dessus -->
-    <div class="about-title-container">
-      <h2 class="main-title">À propos de nous</h2>
-    </div>
+<div class="header-center"> 
+  <nav>
+    <a href="#hero-id" data-fr="Accueil" data-en="Home">Accueil</a>
+    <a href="#goals" data-fr="Objectifs" data-en="Goals">Objectifs</a>
+    <a href="#about" data-fr="À propos" data-en="About">À propos</a>
+    <a href="#projects" data-fr="Nos services" data-en="Services">Nos services</a>
+    <a href="#news" data-fr="Actualités" data-en="News">Actualités</a>
+    <a href="#cyber-tips" data-fr="Cyber-Astuces" data-en="Cyber-tips">Cyber-Astuces</a>
+    <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+  </nav>
   
-    <div class="about-container">
-  
-      <div class="about-image" data-aos="fade-right">
-        <img src="images/logoAgri.jpg" alt="Agrilens IA">
+  <!-- Drapeaux + Select -->
+ <div class="custom-language-select">
+  <button id="selected-language">
+    <img src="images/fr.png" alt="FR" class="flag-icon">
+    <span>FR</span>
+  </button>
+  <ul class="language-options">
+    <li data-lang="fr">
+      <img src="images/fr.png" alt="FR" class="flag-icon"> FR
+    </li>
+    <li data-lang="en">
+      <img src="images/en.jpg" alt="EN" class="flag-icon"> EN
+    </li>
+  </ul>
+</div>
+
+</div>
+
+</header>
+
+<div class="separator"></div>
+
+<section class="hero" id="hero-id">
+  <div id="particles-js"></div>
+
+  <div class="hero-content">
+    <div class="image-gallery">
+      <img src="images/photo1.jpg" alt="Cyber 1">
+      <img src="images/photo3.jpg" alt="Cyber 2">
+      <img src="images/photo2.jpg" alt="Cyber 3">
+    </div>
+    <div class="text-content">
+      <h1 data-fr="La technologie au service de la justice" data-en="Technology Serving Justice">La technologie au service de la justice</h1>
+<p data-fr="Investigapol vous aide à collecter, analyser et sécuriser les preuves numériques." data-en="Investigapol helps you collect, analyze and secure digital evidence.">
+  Investigapol vous aide à collecter, analyser et sécuriser les preuves numériques.
+</p>
+ <a href="#projects">
+<button data-fr="Découvrir nos solutions" data-en="Discover our solutions">Découvrir nos solutions</button>
+
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider">
+  <svg viewBox="0 0 1440 50" preserveAspectRatio="none">
+    <path fill="#00b4ff" d="M0,0 Q720,50 1440,0 L1440,50 L0,50 Z"></path>
+  </svg>
+</div>
+
+
+
+  <!-- Nos objectifs -->
+   <section id="goals">
+  <h2 data-fr="Objectifs" data-en="Goals">Objectifs</h2>
+  <div class="goals-container">
+    <div class="goal-box" data-aos="fade-up" data-aos-duration="1000">
+      <i class="fas fa-user-secret goal-icon"></i>
+      <h3 data-fr="Fournir des enquêtes discrètes et efficaces" data-en="Provide discreet and effective investigations">Fournir des enquêtes discrètes et efficaces</h3>
+    </div>
+    <div class="goal-box" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+      <i class="fas fa-shield-alt goal-icon"></i>
+      <h3 data-fr="Assurer la confidentialité et la protection des données des clients" data-en="Ensure client data confidentiality and protection">Assurer la confidentialité et la protection des données des clients</h3>
+    </div>
+  </div>
+</section>
+
+      <div class="section-divider">
+  <svg viewBox="0 0 2800 50" preserveAspectRatio="none">
+   
+  </svg>
+</div>
+
+      <!-- À Propos -->
+<section class="about-section" id="about">
+  <div class="about-title-container">
+    <h2  class="main-title" data-fr="À propos de nous" data-en="About Us">À propos de nous</h2>
+  </div>
+
+  <div class="about-container" style="justify-content: center;">
+    <div class="about-image" data-aos="fade-right">
+      <img src="images/logoInves.png" alt="Investigapol">
+    </div>
+
+    <div class="about-content" data-aos="fade-left">
+      <span class="subtitle">Investigapol</span>
+      <h3  class="about-title" data-fr="L'excellence en matière d'investigation privée au Burkina Faso" data-en="Excellence in Private Investigation in Burkina Faso">L'excellence en matière d'investigation privée au Burkina Faso</h3>
+      <p class="about-text" data-fr="Investigapol est une agence spécialisée dans les enquêtes privées, la recherche d’informations stratégiques, la détection de fraudes et l’analyse de risques. Basée au Burkina Faso, nous œuvrons pour la vérité et la transparence au service des particuliers, entreprises et institutions." data-en="Investigapol is an agency specializing in private investigations, strategic intelligence research, fraud detection, and risk analysis. Based in Burkina Faso, we strive for truth and transparency for individuals, businesses, and institutions.">
+        Investigapol est une agence spécialisée dans les enquêtes privées, la recherche d’informations stratégiques, la détection de fraudes et l’analyse de risques. Basée au Burkina Faso, nous œuvrons pour la vérité et la transparence au service des particuliers, entreprises et institutions.
+      </p>
+
+      <div class="about-tabs">
+        <button class="tab-button active" data-tab="tab1" data-fr="Vision" data-en="Vision"><i class="fas fa-eye"></i> Vision</button>
+        <button class="tab-button" data-tab="tab2" data-fr="Nos missions" data-en="Our missions"><i class="fas fa-briefcase"></i> Nos missions</button>
+        <button class="tab-button" data-tab="tab3" data-fr="Engagement" data-en="Commitment"><i class="fas fa-user-shield"></i> Engagement</button>
       </div>
-      
-      <div class="about-content" data-aos="fade-left">
-        <span class="subtitle">Agrilens IA</span>
-        <h3 class="about-title">Une révolution agricole par l'intelligence artificielle</h3>
-        <p class="about-text">
-          Agrilens IA est une solution intelligente qui révolutionne la gestion agricole en Afrique grâce à l'intelligence artificielle et aux données en temps réel.
-        </p>
-  
-        <div class="about-tabs">
-          <button class="tab-button active" data-tab="tab1"><i class="fas fa-brain"></i> IA & Vision</button>
-          <button class="tab-button" data-tab="tab2"><i class="fas fa-seedling"></i> Suivi des cultures</button>
-          <button class="tab-button" data-tab="tab3"><i class="fas fa-chart-bar"></i> Aide à la décision</button>
+
+      <div class="tab-content active" id="tab1">
+        <p data-fr="Être le partenaire de référence en matière d'investigation confidentielle, contribuant à un environnement plus juste, sécurisé et responsable au Burkina Faso et en Afrique de l’Ouest." data-en="To be the benchmark partner in confidential investigations, contributing to a fairer, more secure and responsible environment in Burkina Faso and West Africa.">Être le partenaire de référence en matière d'investigation confidentielle, contribuant à un environnement plus juste, sécurisé et responsable au Burkina Faso et en Afrique de l’Ouest.</p>
+      </div>
+      <div class="tab-content" id="tab2">
+        <p data-fr="Réaliser des enquêtes discrètes, analyser des preuves numériques, détecter les dispositifs d’écoute et prévenir les activités frauduleuses dans tous les secteurs d’activité." data-en="Conduct discreet investigations, analyze digital evidence, detect listening devices and prevent fraudulent activities across all sectors of activity.">Réaliser des enquêtes discrètes, analyser des preuves numériques, détecter les dispositifs d’écoute et prévenir les activités frauduleuses dans tous les secteurs d’activité.</p>
+      </div>
+      <div class="tab-content" id="tab3">
+        <p data-fr="Nous garantissons une totale confidentialité des dossiers, une méthodologie rigoureuse, et une éthique professionnelle irréprochable dans toutes nos interventions." data-en="We guarantee total confidentiality of files, a rigorous methodology, and impeccable professional ethics in all our interventions.">Nous garantissons une totale confidentialité des dossiers, une méthodologie rigoureuse, et une éthique professionnelle irréprochable dans toutes nos interventions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <div class="section-divider">
+  <svg viewBox="0 0 1440 50" preserveAspectRatio="none"> 
+    <path fill="#00b4ff" d="M0,0 Q720,50 1440,0 L1440,50 L0,50 Z"></path>
+  </svg>
+</div>
+
+
+   <!-- Services -->
+<section id="projects">
+  <h2 data-fr="Nos Services" data-en="Our Services">Nos Services</h2>
+  <div class="projects-container">
+
+   
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/serv1.png" alt="Enquêtes privées">
+          <h3 data-fr="Enquêtes et Recherches privées" data-en="Private Investigations and Research">Enquêtes et Recherches privées</h3>
         </div>
-  
-        <div class="tab-content active" id="tab1">
-          <p>Analyse des images agricoles grâce à l’IA pour détecter les maladies, estimer les rendements et améliorer les pratiques agricoles.</p>
-        </div>
-        <div class="tab-content" id="tab2">
-          <p>Surveillance en temps réel de la croissance des cultures, avec des alertes intelligentes et recommandations personnalisées.</p>
-        </div>
-        <div class="tab-content" id="tab3">
-          <p>Tableaux de bord interactifs pour orienter les décisions agricoles basées sur les données climatiques, de sol et de rendement.</p>
+        <div class="flip-card-back">
+          <p data-fr="Nous menons des investigations discrètes pour des affaires personnelles, familiales ou d’entreprise, avec rigueur et confidentialité." data-en="We conduct discreet investigations into personal, family or business matters, with rigor and confidentiality.">Nous menons des investigations discrètes pour des affaires personnelles, familiales ou d’entreprise, avec rigueur et confidentialité.</p>
         </div>
       </div>
     </div>
-  </section>
-  
-  
 
-
-    <!-- Services -->
-    <section id="projects">
-        <h2>Nos Services</h2>
-        <div class="projects-container">
-            <div class="project">
-                <img src="images/photo3.jpeg" alt="suivi temps reel">
-                <h3>Suivi en Temps Réel des Cultures</h3>
-                <p>Grâce à l’imagerie drone et capteurs IoT, nous offrons une cartographie dynamique de la santé des cultures pour anticiper les problèmes et améliorer les rendements.</p>
-            </div>
-            <div class="project">
-                <img src="images/stress.jpg" alt="stress">
-                <h3>Détection Automatisée des Maladies et Stress Hydriques</h3>
-                <p>Notre technologie d’intelligence artificielle identifie rapidement les zones affectées par la sécheresse, les parasites ou les maladies pour des interventions ciblées.</p>
-            </div>
-            <div class="project">
-                <img src="images/accomp.jpg" alt="Lithium">
-                <h3>Recommandations Personnalisées</h3>
-                <p>Nous proposons des conseils adaptés à chaque parcelle en matière d’irrigation, de fertilisation et de traitement, afin d’optimiser chaque action agricole.</p>
-            </div>
-            <div class="project">
-                <img src="images/tempReel.jpg" alt="Mine de sel">
-                <h3>Plateforme Mobile Accessible</h3>
-                <p>Nos services sont disponibles via une application intuitive, accessible même dans les zones rurales, pour faciliter la prise de décision au quotidien.</p>
-            </div>
-            <div class="project">
-                <img src="images/ecorespon.jpeg" alt="Mine de sel">
-                <h3>Agriculture Écoresponsable</h3>
-                <p>Nous promouvons des pratiques agricoles respectueuses de l’environnement, réduisant l’usage excessif d’intrants et favorisant la durabilité des terres.</p>
-            </div>
-            <div class="project">
-                <img src="images/formation.jpg" alt="Mine de sel">
-                <h3>Formation et Accompagnement des Agriculteurs</h3>
-                <p>Nous accompagnons les producteurs avec des contenus de formation adaptés, des démonstrations pratiques et une assistance technique continue.</p>
-            </div>
-           
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/serv2.png" alt="Détection de matériel">
+          <h3 data-fr="Détection de matériels d'écoute" data-en="Detection of listening equipment">Détection de matériels d'écoute</h3>
         </div>
-    </section>
+        <div class="flip-card-back">
+          <p data-fr="Inspection minutieuse des bureaux, domiciles et véhicules pour identifier et neutraliser tout dispositif d’écoute ou de surveillance." data-en="Thorough inspection of offices, homes and vehicles to identify and neutralize any listening or surveillance devices.">Inspection minutieuse des bureaux, domiciles et véhicules pour identifier et neutraliser tout dispositif d’écoute ou de surveillance.</p>
+        </div>
+      </div>
+    </div>
 
-  
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/serv3.jpg" alt="Moralité des associés">
+          <h3 data-fr="Moralité des associés" data-en="Morality of associates">Moralité des associés</h3>
+        </div>
+        <div class="flip-card-back">
+          <p data-fr="Évaluation du passé judiciaire, professionnel et comportemental de partenaires ou collaborateurs potentiels." data-en="Assessment of the judicial, professional and behavioral past of potential partners or collaborators.">Évaluation du passé judiciaire, professionnel et comportemental de partenaires ou collaborateurs potentiels.</p>
+        </div>
+      </div>
+    </div>
 
- <!-- Contact -->
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/serv4.png" alt="Vols et escroqueries">
+          <h3 data-fr="Enquêtes pour vols et escroqueries" data-en="Investigations for theft and fraud">Enquêtes pour vols et escroqueries</h3>
+        </div>
+        <div class="flip-card-back">
+          <p data-fr="Analyse d’incidents de vol ou d’escroquerie, recherche de preuves tangibles, et remise de rapports exploitables juridiquement." data-en="
+Analysis of theft or fraud incidents, search for tangible evidence, and submission of legally usable reports.">Analyse d’incidents de vol ou d’escroquerie, recherche de preuves tangibles, et remise de rapports exploitables juridiquement.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/serv5.jpg" alt="Pré-embauche">
+          <h3 data-fr="Enquêtes pré-embauche" data-en="Pre-employment investigations">Enquêtes pré-embauche</h3>
+        </div>
+        <div class="flip-card-back">
+          <p data-fr="Vérification de l’historique professionnel, des références, de la véracité des diplômes ou des comportements litigieux passés." data-en="Verification of professional history, references, veracity of diplomas or past contentious behavior.">Vérification de l’historique professionnel, des références, de la véracité des diplômes ou des comportements litigieux passés.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/formation.jpg" alt="Voisinage">
+          <h3 data-fr="Enquêtes de voisinage" data-en="Neighborhood Investigations">Enquêtes de voisinage</h3>
+        </div>
+        <div class="flip-card-back">
+          <p data-fr="Collecte d’informations auprès de l’entourage pour compléter ou recouper une enquête en cours." data-en="Gathering information from those around you to supplement or cross-check an ongoing investigation.">Collecte d’informations auprès de l’entourage pour compléter ou recouper une enquête en cours.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/serv7.png" alt="Filature">
+          <h3 data-fr="Filature" data-en="Tailing">Filature</h3>
+        </div>
+        <div class="flip-card-back">
+          <p data-fr="Surveillance discrète de personnes suspectées de fraude ou d’activités illicites, avec rapports détaillés." data-en="Discreet surveillance of individuals suspected of fraud or illicit activities, with detailed reports.">Surveillance discrète de personnes suspectées de fraude ou d’activités illicites, avec rapports détaillés.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/serv8.png" alt="Disparus">
+          <h3 data-fr="Recherches de personnes disparues" data-en="Searches for missing persons">Recherches de personnes disparues</h3>
+        </div>
+        <div class="flip-card-back">
+          <p data-fr="Utilisation de méthodes d’enquête pour retrouver des personnes portées disparues ou recherchées depuis longtemps." data-en="Use of investigative methods to locate missing or long-sought persons.">Utilisation de méthodes d’enquête pour retrouver des personnes portées disparues ou recherchées depuis longtemps.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/serv9.jpg" alt="Contre enquête">
+          <h3 data-fr="Contre-enquête" data-en="Counter-investigation">Contre-enquête</h3>
+        </div>
+        <div class="flip-card-back">
+          <p data-fr="Révision indépendante d'une enquête officielle en vue de confirmer ou d’infirmer les éléments présentés par les parties." data-en="Independent review of an official investigation to confirm or refute the evidence presented by the parties">Révision indépendante d'une enquête officielle en vue de confirmer ou d’infirmer les éléments présentés par les parties.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider">
+  <svg viewBox="0 0 1440 50" preserveAspectRatio="none"> 
+    <path fill="#00b4ff" d="M0,0 Q720,50 1440,0 L1440,50 L0,50 Z"></path>
+  </svg>
+</div>
+
+<!-- Actualités & Cyberalertes -->
+<section id="news" style="background:#eef4fb; padding:80px 20px; text-align:center;">
+  <h2 style="font-size:2.5em; color:#002244; margin-bottom:40px;" data-fr="Actualités & Cyberalertes" data-en="Actualités & Cyberalertes">Actualités & Cyberalertes</h2>
+  <div class="news-slider">
+    <div class="news-item" data-fr="🔐 Alerte : tentative de phishing signalée dans les boîtes mail burkinabè." data-en="🔐 Alert: Phishing attempt reported in Burkinabe mailboxes.">🔐 Alerte : tentative de phishing signalée dans les boîtes mail burkinabè.</div>
+    <div class="news-item" data-fr="📢 Loi sur la cybersécurité renforcée au Burkina Faso en 2025." data-en="📢 Cybersecurity law strengthened in Burkina Faso in 2025.">📢 Loi sur la cybersécurité renforcée au Burkina Faso en 2025.</div>
+    <div class="news-item" data-fr="⚠️ Malware mobile détecté sur plusieurs appareils Android en Afrique de l’Ouest." data-en="⚠️ Mobile malware detected on several Android devices in West Africa.">⚠️ Malware mobile détecté sur plusieurs appareils Android en Afrique de l’Ouest.</div>
+  </div>
+</section>
+
+
+<!-- Astuces Cybersécurité -->
+<section id="cyber-tips" style="background:#ffffff; padding:80px 20px; text-align:center;">
+  <h2 style="font-size:2.5em; color:#002244; margin-bottom:40px;" data-fr="Astuces de Cybersécurité" data-en="Cybersecurity Tips">Astuces de Cybersécurité</h2>
+  <div class="tips-container">
+    <div class="tip-card" data-aos="fade-up">
+      <h3 data-fr="📞 Ne partagez jamais vos codes de transfert" data-en="📞 Never share your transfer codes">📞 Ne partagez jamais vos codes de transfert</h3>
+      <p data-fr="Les agents officiels ne demandent jamais votre code secret. Gardez-le confidentiel, même avec vos proches." data-en="Officials never ask for your PIN. Keep it confidential, even with your loved ones.">Les agents officiels ne demandent jamais votre code secret. Gardez-le confidentiel, même avec vos proches.</p>
+    </div>
+    <div class="tip-card" data-aos="fade-up">
+      <h3 data-fr="🚨 Méfiez-vous des faux messages de gain" data-en="🚨 Beware of fake winning messages">🚨 Méfiez-vous des faux messages de gain</h3>
+      <p data-fr="Si vous recevez un message disant que vous avez gagné un prix, vérifiez auprès de la société officielle avant d’agir." data-en="If you receive a message saying you have won a prize, check with the official company before acting.">Si vous recevez un message disant que vous avez gagné un prix, vérifiez auprès de la société officielle avant d’agir.</p>
+    </div>
+    <div class="tip-card" data-aos="fade-up">
+      <h3 data-fr="👥 Ne cliquez pas sur des liens envoyés en inbox" data-en="👥 Do not click on links sent to your inbox">👥 Ne cliquez pas sur des liens envoyés en inbox</h3>
+      <p data-fr="Certains pirates se font passer pour vos amis pour vous envoyer des liens frauduleux." data-en="Some hackers pretend to be your friends to send you fraudulent links.">Certains pirates se font passer pour vos amis pour vous envoyer des liens frauduleux.</p>
+    </div>
+    <div class="tip-card" data-aos="fade-up">
+      <h3 data-fr="🧠 Vérifiez les fautes dans les messages" data-en="🧠 Check messages for mistakes">🧠 Vérifiez les fautes dans les messages</h3>
+      <p data-fr="Les arnaques contiennent souvent des fautes de grammaire ou de syntaxe inhabituelles." data-en="Scams often contain unusual grammatical or syntax errors.">Les arnaques contiennent souvent des fautes de grammaire ou de syntaxe inhabituelles.</p>
+    </div>
+    <div class="tip-card" data-aos="fade-up">
+      <h3 data-fr="📦 N’envoyez jamais d’argent avant de recevoir la marchandise" data-en="📦 Never send money before receiving the goods">📦 N’envoyez jamais d’argent avant de recevoir la marchandise</h3>
+      <p data-fr="Utilisez des services de livraison avec paiement à la réception (paiement contre-remboursement)." data-en="Use delivery services with payment on receipt (cash on delivery).">Utilisez des services de livraison avec paiement à la réception (paiement contre-remboursement).</p>
+    </div>
+    <div class="tip-card" data-aos="fade-up">
+      <h3 data-fr="🏪 Achetez auprès de vendeurs vérifiés" data-en="🏪 Buy from verified sellers">🏪 Achetez auprès de vendeurs vérifiés</h3>
+      <p data-fr="Consultez les avis et l’historique du vendeur avant tout paiement, surtout sur Facebook Marketplace ou Telegram." data-en="Check the seller's reviews and history before making any payment, especially on Facebook Marketplace or Telegram.">Consultez les avis et l’historique du vendeur avant tout paiement, surtout sur Facebook Marketplace ou Telegram.</p>
+    </div>
+    <div class="tip-card" data-aos="fade-up">
+      <h3 data-fr="📄 Ne payez jamais pour un recrutement" data-en="📄 Never pay for recruitment">📄 Ne payez jamais pour un recrutement</h3>
+      <p data-fr="Aucun vrai recruteur ne demande de frais d’inscription ou de traitement de dossier. C’est illégal au Burkina Faso." data-en="No real recruiter charges registration or processing fees. This is illegal in Burkina Faso.">Aucun vrai recruteur ne demande de frais d’inscription ou de traitement de dossier. C’est illégal au Burkina Faso.</p>
+    </div>
+    <div class="tip-card" data-aos="fade-up">
+      <h3 data-fr="📍 Vérifiez toujours l’existence de l’entreprise" data-en="📍 Always check the existence of the company">📍 Vérifiez toujours l’existence de l’entreprise</h3>
+      <p data-fr="Faites une recherche sur Google ou les réseaux sociaux pour voir si l’entreprise existe réellement." data-en="Do a Google or social media search to see if the company actually exists.">Faites une recherche sur Google ou les réseaux sociaux pour voir si l’entreprise existe réellement.</p>
+    </div>
+    <div class="tip-card" data-aos="fade-up">
+      <h3 data-fr="🕵️‍♂️ Ne divulguez pas de photos ou vidéos sensibles" data-en="🕵️‍♂️ Do not disclose sensitive photos or videos">🕵️‍♂️ Ne divulguez pas de photos ou vidéos sensibles</h3>
+      <p data-fr="Ces contenus peuvent être utilisés pour vous faire chanter ou créer de faux profils à votre nom." data-en="These contents can be used to blackmail you or create fake profiles in your name.">Ces contenus peuvent être utilisés pour vous faire chanter ou créer de faux profils à votre nom.</p>
+    </div>
+    <div class="tip-card" data-aos="fade-up">
+      <h3 data-fr="🔍 Vérifiez les profils suspects" data-en="🔍 Check suspicious profiles">🔍 Vérifiez les profils suspects</h3>
+      <p data-fr="Si une personne semble trop parfaite ou vous demande de l’argent trop vite, c’est sûrement une arnaque." data-en="If someone seems too perfect or asks you for money too quickly, it's probably a scam.">Si une personne semble trop parfaite ou vous demande de l’argent trop vite, c’est sûrement une arnaque.</p>
+    </div>
+  </div>
+</section>
+
+
+<div class="section-divider">
+  <svg viewBox="0 0 1440 50" preserveAspectRatio="none"> 
+    <path fill="#00b4ff" d="M0,0 Q720,50 1440,0 L1440,50 L0,50 Z"></path>
+  </svg>
+</div> 
+
+    <!-- Contact -->
 <section id="contact">
   <h2>Contact</h2>
   <div class="contact-container">
@@ -634,34 +983,35 @@ textarea {
       <div class="contact-box">
           <img src="images/burkina.png.png" class="flag" alt="Burkina Faso">
           <h3>Burkina Faso</h3>
-          <p>Email: bf@devafrik.com</p>
-          <p>Téléphone: +2261122334455</p>
+          <p data>Email: bf@devafrik.com</p>
+          <p data-fr="Téléphone: +2261122334455" data-en="Phone: +2261122334455">Téléphone: +2261122334455</p>
       </div>
 
       <!-- Formulaire de contact -->
       <div class="contact-box">
-          <form action="#" method="post">
-              <div class="input-group">
-                  <input type="text" id="name" name="name" placeholder="Votre Nom" required>
-              </div>
-              <div class="input-group">
-                  <input type="email" id="email" name="email" placeholder="Votre Email" required>
-              </div>
-              <div class="input-group">
-                  <textarea id="message" name="message" placeholder="Votre Message" required></textarea>
-              </div>
-              <button type="submit" class="submit-btn">Envoyer</button>
-          </form>
+        <form action="" method="POST">
+          <div class="input-group">
+              <input type="text" name="name" placeholder="Votre Nom" required>
+          </div>
+          <div class="input-group">
+              <input type="email" name="email" placeholder="Votre Email" required>
+          </div>
+          <div class="input-group">
+              <textarea name="message" placeholder="Votre Message" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn" data-fr="Envoyer" data-en="Send">Envoyer</button>
+      </form>
+      
       </div>
 
       <!-- Réseaux sociaux -->
       <div class="contact-box">
-          <h3>Suivez-nous</h3>
+          <h3 data-fr="Suivez-nous sur" data-en="Follow us on">Suivez-nous sur</h3>
           <div class="social-links">
-              <a href="https://www.facebook.com/AGRILENSIA" target="_blank" class="social-icon">
+              <a href="" target="_blank" class="social-icon">
                   <i class="fab fa-facebook-f"></i>
               </a>
-              <a href="https://www.linkedin.com/company/agrilensia" target="_blank" class="social-icon">
+              <a href="" target="_blank" class="social-icon">
                   <i class="fab fa-linkedin-in"></i>
               </a>
           </div>
@@ -669,8 +1019,6 @@ textarea {
 
   </div>
 </section>
-
-
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -685,12 +1033,27 @@ textarea {
   });
 </script>
 
-    <!-- Pied de page -->
-    <footer>
-        <p>© 2025 Agrilens IA - Tous droits réservés.</p>
-    </footer>
 
-    <script>
+<!-- Liens vers les sections du site -->
+<section id="quick-links" style="background:#ffffff; padding:40px 20px; text-align:center;">
+  <h3 style="color:#151352; font-size:1.5em; margin-bottom:30px;">Liens rapides</h3>
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px; font-size:1em;">
+    <a href="#hero-id" class="quick-link">Accueil</a>
+    <a href="#goals" class="quick-link">Objectifs</a>
+    <a href="#about" class="quick-link">À propos</a>
+    <a href="#projects" class="quick-link">Nos services</a>
+    <a href="#news" class="quick-link">Actualités</a>
+    <a href="#cyber-tips" class="quick-link">Astuces</a>
+    <a href="#contact" class="quick-link">Contact</a>
+  </div>
+</section>
+
+
+<footer>
+  &copy; 2025 Investigapol. Tous droits réservés.
+</footer>
+
+<script>
         window.addEventListener('scroll', function() {
           const header = document.querySelector('header');
           if (window.scrollY > 50) {
@@ -700,8 +1063,7 @@ textarea {
           }
         });
       </script>
-      
-    <script>
+<script>
       // Script pour changer les images du slider automatiquement
       let currentIndex = 0;
       const images = document.querySelectorAll(".slider-container img");
@@ -715,11 +1077,54 @@ textarea {
       setInterval(changeImage, 4000); // Change toutes les 4 secondes
   </script>
 
+
+<script>
+  const selectBtn = document.getElementById("selected-language");
+  const optionList = document.querySelector(".language-options");
+
+  selectBtn.addEventListener("click", () => {
+    optionList.style.display = optionList.style.display === "block" ? "none" : "block";
+  });
+
+  document.querySelectorAll(".language-options li").forEach(option => {
+    option.addEventListener("click", () => {
+      const lang = option.getAttribute("data-lang");
+      const img = option.querySelector("img").src;
+      const text = option.textContent.trim();
+
+      // Met à jour le bouton principal
+      selectBtn.innerHTML = `<img src="${img}" class="flag-icon"><span>${text}</span>`;
+
+      // Masque la liste
+      optionList.style.display = "none";
+
+      // ✅ Change tous les textes en fonction de la langue
+      document.querySelectorAll('[data-fr][data-en]').forEach(element => {
+        const translated = element.getAttribute(`data-${lang}`);
+        if (translated) {
+          element.textContent = translated;
+        }
+      });
+
+      console.log("Langue sélectionnée :", lang);
+    });
+  });
+
+  // Masquer quand on clique ailleurs
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".custom-language-select")) {
+      optionList.style.display = "none";
+    }
+  });
+</script>
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
   AOS.init();
 </script>
-
 <script>
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
@@ -735,7 +1140,44 @@ textarea {
       });
     });
   </script>
-  
+
+<!-- Particles.js -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  particlesJS("particles-js", {
+    "particles": {
+      "number": { "value": 60 },
+      "color": { "value": "#00b4ff" },
+      "shape": { "type": "circle" },
+      "opacity": { "value": 0.5 },
+      "size": { "value": 4 },
+      "line_linked": {
+        "enable": true,
+        "distance": 120,
+        "color": "#00b4ff",
+        "opacity": 0.4,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 3,
+        "direction": "none",
+        "out_mode": "out"
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": { "enable": true, "mode": "grab" },
+        "onclick": { "enable": false },
+        "resize": true
+      }
+    },
+    "retina_detect": true
+  });
+</script>
+
+
 
 </body>
 </html>
